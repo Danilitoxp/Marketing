@@ -1,0 +1,376 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Layout principal */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #2980b9;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: width 0.3s ease;
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+input, select {
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 1px solid grey;
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center; /* Alinha verticalmente o ícone e o texto */
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ecf0f1;
+    cursor: pointer;
+    transition: background 0.3s, padding-left 0.3s;
+}
+
+.sidebar ul li .material-icons {
+    margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background-color: #2c3e50;
+    padding-left: 20px;
+    border-radius: 8px;
+}
+
+.sidebar ul li.active {
+    background-color: #ffffff;
+    color: #2980b9;
+}
+
+/* Modais */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed; /* Fica fixo na tela */
+    z-index: 1; /* Fica acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    overflow: auto; /* Permite rolagem se necessário */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+}
+
+.modal-content {
+    background-color: #fefefe; /* Fundo do card */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 20px; /* Espaçamento interno */
+    border: 1px solid #888; /* Borda do card */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra do card */
+    width: 300px; /* Largura do card */
+    position: absolute; /* Para centralizar verticalmente */
+    top: 50%; /* Posiciona na metade da tela */
+    left: 50%; /* Posiciona na metade da tela */
+    transform: translate(-50%, -50%); /* Centraliza usando transformação */
+}
+
+/* Estilo do card */
+.card {
+    background-color: #fff;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 20px 10px;
+    padding: 10px;
+    align-items: center; /* Alinha os itens ao centro */
+}
+
+#trainingDate {
+    width: 100%;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin: 0 0 15px; /* Margem inferior */
+}
+
+input[type="text"], input[type="time"] {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    margin: 8px 0; /* Margens superiores e inferiores */
+    border: 1px solid #ccc; /* Borda leve */
+    border-radius: 4px; /* Bordas arredondadas */
+}
+
+/* Botões de Ação */
+button {
+    padding: 10px 20px;
+    background-color: #1abc9c; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    font-size: 16px;
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor em forma de mão */
+    transition: background-color 0.3s; /* Efeito de transição */
+}
+
+button:hover {
+    background-color: #16a085; /* Cor ao passar o mouse */
+}
+
+/* Estilização específica para botões */
+#updateEventBtn {
+    background-color: #16a085;
+}
+
+#deleteEventBtn {
+    background-color: red;
+}
+
+button#filterBtn {
+    background-color: #3498db;
+    margin: 20px 0;
+}
+
+button#filterBtn:hover {
+    background-color: #2980b9;
+}
+
+/* Fechar modal */
+.close {
+    color: #ff0000; /* Cor do botão de fechar */
+    float: right; /* Alinha à direita */
+    font-size: 28px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Cor ao passar o mouse */
+    text-decoration: none; /* Sem sublinhado */
+    cursor: pointer; /* Cursor em forma de mão */
+}
+
+/* Conteúdo principal */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: #f9fafb;
+    transition: padding 0.3s;
+}
+
+.main-content h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.main-content p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Responsividade geral */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .sidebar ul li {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .sidebar ul li.active {
+        padding-left: 0;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .main-content h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    .main-content h2 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 10;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar ul li {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .main-content h2 {
+        font-size: 20px;
+    }
+}
+
+/* Calendário */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+.calendar-day {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha o conteúdo no topo */
+    align-items: center;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-height: 120px; /* Aumenta o tamanho do dia para evitar sobreposição */
+}
+
+.calendar-day:hover {
+    background-color: #bdc3c7;
+}
+
+.calendar-day.today {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Estilo para o dia do mês */
+.calendar-day .day-number {
+    font-size: 24px; /* Aumentar o tamanho do número do dia */
+    font-weight: 800; /* Deixar o número do dia em negrito */
+}
+
+/* Estilo para os eventos */
+.calendar-day .event {
+    background-color: #fff;
+    color: #2980b9;
+    font-weight: 600;
+    padding: 5px; /* Aumentar o padding para o evento */
+    border-radius: 5px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 5px; /* Ajustar a posição do evento */
+    left: 50%; /* Centralizar horizontalmente */
+    transform: translateX(-50%); /* Centralizar horizontalmente */
+    width: 90%; /* Definir uma largura para o evento */
+    text-align: center; /* Centralizar o texto do evento */
+}
+
+/* Ajustes para botões de ação */
+button#addEventBtn,
+button#addTaskBtn {
+    background-color: #3498db;
+    margin-top: 10px;
+}
+
+button#addEventBtn:hover,
+button#addTaskBtn:hover {
+    background-color: #2980b9;
+}
+
+.training-event {
+    color: #fff; /* Cor do texto */
+    background-color: #007bff; /* Cor de fundo dos treinamentos */
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 5px; /* Distância do dia */
+}
+
+.trainings {
+    display: flex;
+}
+
+/* Lista de Treinamentos e Eventos */
+.trainings-list,
+.events-list,
+.tasks-list {
+    margin: 20px 0;
+}
+
+.trainings-list li,
+.events-list li,
+.tasks-list li {
+    background-color: #ecf0f1;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.trainings-list li:hover,
+.events-list li:hover,
+.tasks-list li:hover {
+    background-color: #bdc3c7;
+}
+

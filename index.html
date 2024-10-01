@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Marketing</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="/img/Carflax Horizontal Branco.svg" alt="Logo Carflax">
+      <ul>
+        <li data-section="calendar" class="active"><span class="material-icons">calendar_today</span> Calendário</li>
+        <li data-section="trainings"><span class="material-icons">school</span> Treinamentos</li>
+      </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content" id="main-content">
+      <h2>Bem-vindo ao Gerenciamento de Marketing</h2>
+      <p>Selecione uma opção no menu para começar.</p>
+    </div>
+
+    <!-- Modal para adicionar evento -->
+    <div id="eventModal" class="modal">
+      <div class="modal-content card">
+        <span class="close" aria-label="Fechar">&times;</span>
+        <h2>Adicionar Evento</h2>
+        <input type="text" id="eventText" placeholder="Nome do Evento" required />
+        <input type="time" id="eventTime" placeholder="Hora do Evento" required />
+        <button id="saveEventBtn">Salvar Evento</button>
+      </div>
+    </div>
+
+    <!-- Modal para editar evento -->
+    <div id="editEventModal" class="modal">
+      <div class="modal-content card">
+        <span class="close" aria-label="Fechar">&times;</span>
+        <h2>Editar Evento</h2>
+        <input type="text" id="editEventText" placeholder="Nome do Evento" required />
+        <input type="time" id="editEventTime" placeholder="Hora do Evento" required />
+        <div class="eventos">
+          <button id="updateEventBtn">Atualizar</button>
+          <button id="deleteEventBtn">Excluir</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para criar treinamento -->
+    <div id="createTrainingModal" class="modal">
+      <div class="modal-content card">
+        <span class="close" aria-label="Fechar" id="closeCreateTrainingModal">&times;</span>
+        <h2>Criar Treinamento</h2>
+        <input type="file" id="trainingPhoto" accept="image/*" required />
+        <input type="text" id="trainingSupplier" placeholder="Fornecedor" required />
+        <input type="text" id="trainingSubject" placeholder="Assunto" required />
+        <input type="date" id="trainingDate" required />
+        <input type="time" id="trainingTime" required />
+        <button id="createTrainingBtn">Criar Treinamento</button>
+      </div>
+    </div>
+
+    <!-- Modal de Edição/Remoção de Treinamento -->
+    <div id="editTrainingModal" class="modal">
+      <div class="modal-content">
+        <span class="close" aria-label="Fechar">&times;</span>
+        <h2>Editar Treinamento</h2>
+        <input type="file" id="editTrainingPhoto" accept="image/*" required />
+        <input type="text" id="editTrainingSupplier" placeholder="Fornecedor" required />
+        <input type="text" id="editTrainingSubject" placeholder="Assunto" required />
+        <input type="date" id="editTrainingDate" required />
+        <input type="time" id="editTrainingTime" required />
+        <div class="eventos">
+          <button id="updateTrainingBtn">Atualizar Treinamento</button>
+          <button id="deleteTrainingBtn">Excluir Treinamento</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
