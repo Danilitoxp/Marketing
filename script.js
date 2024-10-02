@@ -13,89 +13,71 @@ document.addEventListener("DOMContentLoaded", () => {
       mainContent.innerHTML = sectionContent;
     }
   
-    // Função para gerar o calendário
     function generateCalendar() {
       const monthNames = [
-        "Janeiro",
-        "Fevereiro",
-        "Março",
-        "Abril",
-        "Maio",
-        "Junho",
-        "Julho",
-        "Agosto",
-        "Setembro",
-        "Outubro",
-        "Novembro",
-        "Dezembro",
+          "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
+          "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
       ];
   
       const firstDay = new Date(selectedYear, selectedMonth, 1).getDay();
       const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
   
       let calendarHTML = `
-              <h2>${monthNames[selectedMonth]} ${selectedYear}</h2>
-              <div>
-                  <label for="monthSelect">Mês:</label>
-                  <select id="monthSelect">${monthNames
-                    .map(
+          <h2>${monthNames[selectedMonth]} ${selectedYear}</h2>
+          <div>
+              <label for="monthSelect">Mês:</label>
+              <select id="monthSelect">${monthNames
+                  .map(
                       (name, index) =>
-                        `<option value="${index}" ${
-                          index === selectedMonth ? "selected" : ""
-                        }>${name}</option>`
-                    )
-                    .join("")}</select>
-                  <label for="yearSelect">Ano:</label>
-                  <select id="yearSelect">${Array.from(
-                    { length: 10 },
-                    (_, i) =>
-                      `<option value="${2024 + i}" ${
-                        2024 + i === selectedYear ? "selected" : ""
-                      }>${2024 + i}</option>`
-                  ).join("")}</select>
-              </div>
-              <div class="calendar">`;
+                          `<option value="${index}" ${index === selectedMonth ? "selected" : ""}>${name}</option>`
+                  )
+                  .join("")}</select>
+              <label for="yearSelect">Ano:</label>
+              <select id="yearSelect">${Array.from(
+                  { length: 10 },
+                  (_, i) =>
+                      `<option value="${2024 + i}" ${2024 + i === selectedYear ? "selected" : ""}>${2024 + i}</option>`
+              ).join("")}</select>
+          </div>
+          <div class="calendar">`;
   
-      // Adiciona dias vazios antes do primeiro dia do mês
       for (let i = 0; i < firstDay; i++) {
-        calendarHTML += `<div class="calendar-day empty"></div>`;
+          calendarHTML += `<div class="calendar-day empty"></div>`;
       }
   
       const today = new Date();
-      // Gera os dias do mês
+  
       for (let day = 1; day <= daysInMonth; day++) {
-        const date = `${selectedYear}-${String(selectedMonth + 1).padStart(
-          2,
-          "0"
-        )}-${String(day).padStart(2, "0")}`;
-        const isToday =
-          today.getDate() === day &&
-          selectedMonth === today.getMonth() &&
-          selectedYear === today.getFullYear();
-        const dayClass = isToday ? "calendar-day today" : "calendar-day";
-        const eventList = events[date] || [];
-        const trainingList = trainings.filter(
-          (training) => training.date === date
-        );
+          const date = `${selectedYear}-${String(selectedMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+          const isToday =
+              today.getDate() === day &&
+              selectedMonth === today.getMonth() &&
+              selectedYear === today.getFullYear();
+          const dayClass = isToday ? "calendar-day today" : "calendar-day";
   
-        // Combina eventos e treinamentos
-        const allEvents = [
-          ...eventList,
-          ...trainingList.map(
-            (training) => `${training.subject} às ${training.time}`
-          ),
-        ];
+          const eventList = events[date] || [];
+          const trainingList = trainings.filter(training => training.date === date);
   
-        calendarHTML += `<div class="${dayClass}" data-date="${date}">${day} ${
-          allEvents.length > 0
-            ? `<div class="event">${allEvents.join(", ")}</div>`
-            : ""
-        }</div>`;
+          const allEvents = [
+              ...eventList.map(event => `<div class="event normal">${event}</div>`),
+              ...trainingList.map(training => `<div class="event training">Treinamento ${training.supplier} às ${training.time}</div>`)
+          ];
+  
+          calendarHTML += `<div class="${dayClass}" data-date="${date}">${day}
+              <div class="events-container">${allEvents.join("")}</div>
+          </div>`;
       }
   
       calendarHTML += `</div>`;
       return calendarHTML;
-    }
+  }
+  
+  
+
+    // Função para atualizar a exibição dos treinamentos
+function refreshTrainings() {
+  showTrainings(); // Recarrega a seção de treinamentos
+}
   
     // Função para lidar com o clique em um dia do calendário
     function handleDayClick() {
@@ -171,6 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
         closeModal(button.closest(".modal"));
       };
     });
+
+    
   
     // Adiciona evento de clique aos itens da sidebar
     sidebarItems.forEach((item) => {
