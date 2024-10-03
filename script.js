@@ -6,7 +6,7 @@ import {
   doc,
   setDoc,
   deleteDoc,
-  addDoc,
+  addDoc // Adicione esta linha
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -21,7 +21,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const sidebarItems = document.querySelectorAll(".sidebar ul li");
   const mainContent = document.getElementById("main-content");
   let events = loadEvents(); // Carrega eventos do localStorage
@@ -30,7 +30,31 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentEventIndex = null; // Índice do evento atual
   let selectedMonth = new Date().getMonth(); // Mês atual
   let selectedYear = new Date().getFullYear(); // Ano atual
+  const modais = document.querySelectorAll('.modal');
 
+
+     // Função para fechar um modal
+     function fecharModal(modal) {
+      modal.style.display = "none";
+    }
+
+    // Adiciona o evento de clique nos ícones de fechar
+modais.forEach(modal => {
+  const closeBtn = modal.querySelector('.close');
+  
+  // Fecha o modal ao clicar no ícone de fechar
+  closeBtn.addEventListener('click', () => {
+      fecharModal(modal);
+  });
+  
+  // Fecha o modal ao clicar fora da modal-content
+  modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+          fecharModal(modal);
+      }
+  });
+});
+  
   // Função para trocar o conteúdo da seção principal
   function switchSection(sectionContent) {
     mainContent.innerHTML = sectionContent;
@@ -134,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const editEventTextInput = document.getElementById("editEventText");
     const editEventTimeInput = document.getElementById("editEventTime");
     const eventList = events[date] || [];
-    currentEventDate = date;
+    currentEventDate = date; 
 
     if (eventList.length > 0) {
       editModal.style.display = "block";
@@ -162,6 +186,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       modal.style.display = "none";
     };
+
+     
 
     document.getElementById("updateEventBtn").onclick = () => {
       const updatedEvent = `${editEventTextInput.value} at ${editEventTimeInput.value}`;
@@ -322,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function saveTrainings() {
     // Salva no localStorage
     localStorage.setItem("trainings", JSON.stringify(trainings));
-  
+
     // Salva no Firestore
     try {
       const trainingsRef = collection(db, "trainings");

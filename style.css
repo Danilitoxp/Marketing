@@ -136,9 +136,11 @@ input, select {
     width: 100%;
 }
 
+
+
 .training-item {
     background-color: #ececec;
-    width: 250px;
+    width: 220px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -151,6 +153,66 @@ input, select {
     width: 200px;
     border-radius: 10px;
 }
+
+/* Estilo do botão de upload */
+#trainingPhoto {
+    display: none; /* Oculta o input original */
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 10px 59px;
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #ffffff; /* Cor do texto */
+    font-size: 16px; /* Tamanho da fonte */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s; /* Efeito de transição ao passar o mouse */
+}
+
+.upload-label:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+.upload-label:active {
+    background-color: #004080; /* Cor de fundo ao clicar */
+}
+
+/* Para melhorar a aparência geral do modal */
+.modal-content {
+    padding: 20px; /* Espaçamento interno do modal */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center;
+}
+
+/* Estilo para a entrada de texto do fornecedor e assunto */
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    margin: 10px 0; /* Margem vertical */
+    border: 1px solid #ccc; /* Borda padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    box-sizing: border-box; /* Inclui o padding e a borda na largura total */
+}
+
+/* Estilo para o botão de criar treinamento */
+#createTrainingBtn {
+    background-color: #28a745; /* Cor do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remove borda */
+    padding: 10px 20px; /* Espaçamento */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de pointer */
+    transition: background-color 0.3s; /* Transição de cor */
+}
+
+#createTrainingBtn:hover {
+    background-color: #218838; /* Cor ao passar o mouse */
+}
+
 
 h2 {
     margin: 0 0 15px; /* Margem inferior */

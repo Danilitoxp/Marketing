@@ -51,18 +51,19 @@
     </div>
 
     <!-- Modal para criar treinamento -->
-    <div id="createTrainingModal" class="modal">
-      <div class="modal-content card">
-        <span class="close" aria-label="Fechar" id="closeCreateTrainingModal">&times;</span>
-        <h2>Criar Treinamento</h2>
-        <input type="file" id="trainingPhoto" accept="image/*" required />
-        <input type="text" id="trainingSupplier" placeholder="Fornecedor" required />
-        <input type="text" id="trainingSubject" placeholder="Assunto" required />
-        <input type="date" id="trainingDate" required />
-        <input type="time" id="trainingTime" required />
-        <button id="createTrainingBtn">Criar Treinamento</button>
-      </div>
-    </div>
+<div id="createTrainingModal" class="modal">
+  <div class="modal-content card">
+      <span class="close" aria-label="Fechar" id="closeCreateTrainingModal">&times;</span>
+      <h2>Criar Treinamento</h2>
+      <label for="trainingPhoto" class="upload-label">Selecionar Imagem</label>
+      <input type="file" id="trainingPhoto" accept="image/*" required />
+      <input type="text" id="trainingSupplier" placeholder="Fornecedor" required />
+      <input type="text" id="trainingSubject" placeholder="Assunto" required />
+      <input type="date" id="trainingDate" required />
+      <input type="time" id="trainingTime" required />
+      <button id="createTrainingBtn">Criar Treinamento</button>
+  </div>
+</div>
 
   <script type="module" src="script.js"></script>
 </body>
