@@ -6,6 +6,7 @@ import {
   doc,
   setDoc,
   deleteDoc,
+  addDoc,
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -321,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function saveTrainings() {
     // Salva no localStorage
     localStorage.setItem("trainings", JSON.stringify(trainings));
-
+  
     // Salva no Firestore
     try {
       const trainingsRef = collection(db, "trainings");
