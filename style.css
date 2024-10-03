@@ -19,10 +19,19 @@ body {
     min-height: 100vh;
 }
 
-.deleteTrainingBtn {
-    width: 100%;
-    background-color: rgb(255, 16, 16);
-}
+.delete-training {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .delete-training:hover {
+    background-color: #d32f2f;
+  }
+  
 
 /* Sidebar */
 .sidebar {
@@ -123,27 +132,24 @@ input, select {
     transform: translate(-50%, -50%); /* Centraliza usando transformação */
 }
 
-/* Estilo do card */
-.card {
-    background-color: #fff;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    margin: 20px 10px;
-    padding: 10px;
-    align-items: center; /* Alinha os itens ao centro */
-}
-
 #trainingDate {
     width: 100%;
 }
 
-.card img {
-    width: 100%;
-    max-height: 250px;
+.training-item {
+    background-color: #ececec;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0px;
+    padding: 10px;
+    align-items: center; /* Alinha os itens ao centro */
+}
+
+.training-item img {
+    width: 200px;
+    border-radius: 10px;
 }
 
 h2 {
